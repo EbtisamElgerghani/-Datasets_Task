@@ -1,0 +1,38 @@
+import pandas as pd
+
+#You will use the same `balance.txt` dataset used in the example Jupyter notebook. Remember to ensure it is in the same folder as this notebook.
+df = pd.read_csv('balance.txt',sep=' ')
+
+# 1. Write the code that performs the action described in the following statements.
+# Select the 'Limit' and 'Rating' columns of the first five observations
+first_five_observations = df.iloc[:5]
+first_five_observations[['Limit','Rating']].describe()
+
+# Select the first five observations with 4 cards
+first_five_observations = df.iloc[:5]
+print(first_five_observations)
+four_cards = df['Cards'].head(4)
+print(f"subset of 'Cards' column first 4 raws", four_cards)
+
+# Sort the observations by 'Education'. Show users with a high education value first.
+#df.sortby[:, "Education"].max()
+#print(df.groupby(['Gender']).mean(numeric_only=True))
+df.sort_values(by='Education',ascending=False).head()
+
+#2. Write a short explanation in the form of a comment for the following lines of code. For example:  
+```
+# Selects the first 5 rows, and all of the columns for those rows.
+df.iloc[:5,:]
+```
+
+# Selelct all the column for all rows.
+df.iloc[:,:]
+
+# select all rows starting from fifth row and all column which is after the fifth column 'Age' 
+df.iloc[5:,5:]
+
+# select all rows for the first column 'Balance'.
+df.iloc[:,0]
+
+# select all column from for the 10th row of the DataFrame.
+df.iloc[9,:]
